@@ -1,4 +1,4 @@
-const displayValue = document.getElementById("display")
+const display = document.getElementById("display")
 const buttons = Array.from(document.getElementsByClassName("button"))
 
 buttons.map(button => {
@@ -7,23 +7,23 @@ buttons.map(button => {
 
         switch(targetText) {
             case "C":
-                if(displayValue.innerText) {
-                    displayValue.innerText = ""
-                }
+                display.value = ""
                 break
             case "Del":
-                displayValue.innerText = displayValue.innerText.slice(0, -1)
+                if(display.value) {
+                    display.value = display.value.slice(0, -1)
+                }
                 break
             case "=":
                 try {
-                    displayValue.innerText = eval(displayValue.innerText)
+                    display.value = eval(display.value)
                 }
                 catch {
-                    displayValue.innerText = "Error!"
+                    display.value = "Error!"
                 }
                 break
             default:
-                displayValue.innerText += targetText
+                display.value += targetText
         }
     })
 })
