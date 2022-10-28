@@ -3,10 +3,13 @@ const buttons = Array.from(document.getElementsByClassName("button"))
 
 buttons.map(button => {
     button.addEventListener("click", (e) => {
+        const targetText = e.target.innerText
 
-        switch(e.target.innerText) {
+        switch(targetText) {
             case "C":
-                displayValue.innerText = ""
+                if(displayValue.innerText) {
+                    displayValue.innerText = ""
+                }
                 break
             case "Del":
                 displayValue.innerText = displayValue.innerText.slice(0, -1)
@@ -20,7 +23,7 @@ buttons.map(button => {
                 }
                 break
             default:
-                displayValue.innerText += e.target.innerText
+                displayValue.innerText += targetText
         }
     })
 })
