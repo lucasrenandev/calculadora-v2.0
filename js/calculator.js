@@ -1,9 +1,19 @@
+// SELECIONANDO O ELEMENTO(INPUT) DE EXIBIÇÃO DOS VALORES
 const display = document.getElementById("display")
+
+// SELECIONANDO TODOS OS BOTÕES E ATRIBUINDO EM UM ARRAY 
 const buttons = Array.from(document.getElementsByClassName("button"))
 
+// ADICIONANDO EVENTO PARA TODOS OS BOTÕES
 buttons.map(button => {
     button.addEventListener("click", (e) => {
-        const targetText = e.target.innerText
+        calculator(e)
+    })
+})
+
+// FUNÇÃO PARA GERAR OS CALCULOS + VALIDAÇÕES
+const calculator = (e) => {
+    const targetText = e.target.innerText
 
         switch(targetText) {
             case "C":
@@ -16,14 +26,18 @@ buttons.map(button => {
                 break
             case "=":
                 try {
-                    display.value = eval(display.value)
+                    if(display.value === "") {
+                        display.value = "Faça uma operação!"
+                    }
+                    else {
+                        display.value = eval(display.value)
+                    }
                 }
                 catch {
-                    display.value = "Error!"
+                    display.value = "Operação inválida!"
                 }
                 break
             default:
                 display.value += targetText
         }
-    })
-})
+}

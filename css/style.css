@@ -63,3 +63,7 @@ main section .buttons .button.equal {
     background-color: #0e48e7;
     color: #fff;
 }
+
+main section .buttons .button:active:not(.clear, .del, .equal) {
+    background-color: #00ff00;
+}
